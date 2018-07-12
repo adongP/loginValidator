@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<script src="../bauduyun/js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+		<script src="js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/validator.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/zh.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$.fn.bootstrapValidator.extendRules({
+				"cardid": function() {
+					console.log("身份证被校验")
+					return /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(this.val());
+				}
+			});
+		</script>
+		<script type="text/javascript">
+			
+		</script>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.login-region {
+				width: 40%;
+				height: auto;
+				padding: 20px;
+				border: 1px solid #bbb;
+				margin: 50px auto 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<form id="loginForm" class="form-horizontal login-region" autocomplete="off">
+
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control" id="inputEmail3" placeholder="Email" data-bv-require="true" data-bv-require-message="* 邮箱地址为必填项" data-bv-email="email" data-bv-email-message="* 请输入合法的邮箱地址">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="inputPassword3" placeholder="Password" data-bv-require="true" data-bv-require-message="* 密码为必填项" data-bv-regex="^\w{6,12}$" data-bv-regex-message="* 密码必须由6-12位的字母数字下划线组成">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputName" class="col-sm-2 control-label">Name</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputName3" placeholder="Name" data-bv-regex="^[a-zA-Z]+$">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputCard" class="col-sm-2 control-label">Card</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputCard3" placeholder="Card" data-bv-require="true" data-bv-require-message="* 身份证为必填项" data-bv-cardid="^true" data-bv-cardid-message="* 身份证号不合法">
+
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">Sign in</button>
+				</div>
+			</div>
+		</form>
+		<script type="text/javascript">
+			$("#loginForm").bootstrapValidator({
+				raise: "keyup", //设置触发的实际
+				//				errorMsg:"* 验证错误",
+//				lang: "zh"
+			})
+			//			.extendRules({
+			//				"cardid":function(){
+			//					console.log("身份证被校验")
+			//					return /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(this.val());
+			//				}
+			//			});
+		</script>
+	</body>
+
+</html>
